@@ -1,19 +1,19 @@
 const { InvalidParamsException } = require('../../exceptions/validation');
-const createUser = require('../../modules/users/create');
+const activateUser = require('../../modules/users/activate');
 
-const activate = params => {
+const activate = async params => {
   const { cpf } = params;
 
   if (!cpf) { throw new InvalidParamsException(); }
 
-  const result = await activateUser(cpf);
-
-  if (!result) {
-    console.log(`Not able to active the user with cpf: ${cpf}`);
+  try {
+    const result = await activateUser(cpf);
+    return result;
+  } catch (error) {
+    console.log(error);
     throw new Error('Error while activating the user');
   }
 
-  return result;
 };
 
 module.exports = activate;

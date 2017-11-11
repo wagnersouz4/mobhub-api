@@ -1,9 +1,12 @@
-const activateUser = require('./helper/users/activate');
+const activateUser = require('./helpers/users/activate');
 
 const endpoints = [
   {
     route: '/user/activate',
-    http: { post: activateUser }
+    http: {
+      post: activateUser,
+      notUseCache: true
+    }
   },
 ];
 

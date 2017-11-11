@@ -8,6 +8,8 @@ const activate = async cpf => {
 
   if (!doc) { return; }
 
+  doc.status = 'active';
+
   try {
     const updateResult = await getDatabaseInstance()
       .insert(doc);
@@ -24,4 +26,5 @@ const activate = async cpf => {
   }
 };
 
-activate('01651216614');
+
+module.exports = activate;
